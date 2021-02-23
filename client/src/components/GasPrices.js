@@ -1,26 +1,30 @@
-import React from 'react';
-import moment from 'moment';
-import Loader from 'react-loader-spinner';
+import React from "react";
+import moment from "moment";
+import Loader from "react-loader-spinner";
 
 class GasPrices extends React.Component {
   state = {
-    gasPrices: []
+    gasPrices: [],
   };
 
   componentDidMount() {
     this.getData();
   }
 
-  getData = () => {};
+  getData = () => {
+    // axios request to get data
+    // needs an "authorization" header to pass the middleware fn in the server
+    axios.get("http://localhost:5000/api/data");
+  };
 
   formatData = () => {
     const formattedData = [];
     this.state.gasPrices.forEach((price, index, arr) => {
-      if (price.location === 'US') {
+      if (price.location === "US") {
         formattedData.push({
-          date: moment(price.date).format('MMM'),
+          date: moment(price.date).format("MMM"),
           USPrice: price.price,
-          HawaiiPrice: arr[index + 1].price
+          HawaiiPrice: arr[index + 1].price,
         });
       }
     });
@@ -64,7 +68,7 @@ class GasPrices extends React.Component {
                 <div className="year">2012</div>
               </div>
               <div>
-                {gasPrices.map(price => (
+                {gasPrices.map((price) => (
                   <div className="price-graph">
                     <div className="date">
                       <p>{price.date}</p>
@@ -73,7 +77,7 @@ class GasPrices extends React.Component {
                       <div
                         className="hawaii-line"
                         style={{
-                          width: `${(Number(price.HawaiiPrice) / 5) * 100}%`
+                          width: `${(Number(price.HawaiiPrice) / 5) * 100}%`,
                         }}
                       />
                       <p>${price.HawaiiPrice}</p>
@@ -82,7 +86,7 @@ class GasPrices extends React.Component {
                       <div
                         className="us-line"
                         style={{
-                          width: `${(Number(price.USPrice) / 5) * 100}%`
+                          width: `${(Number(price.USPrice) / 5) * 100}%`,
                         }}
                       >
                         <p>${price.USPrice}</p>
