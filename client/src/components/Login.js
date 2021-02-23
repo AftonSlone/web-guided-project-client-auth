@@ -48,7 +48,7 @@ class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
-          <p>{this.state.error}</p>
+          <p style={{ color: `red`, fontSize: "12px" }}>{this.state.error}</p>
           <button>Log in</button>
         </form>
       </div>
