@@ -6,10 +6,23 @@
 // if not, re-route to the login page
 
 import React from "react";
-import { Route } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 
-function PrivateRoute(props) {
-  return <Route {...props} render={() => {}} />;
+function PrivateRoute({ component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (localStorage.getItem("token")) {
+          // render component
+          return;
+        } else {
+          // route to login
+          <Redirect to="/login" />;
+        }
+      }}
+    />
+  );
 }
 
 export default PrivateRoute;
