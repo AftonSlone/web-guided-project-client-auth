@@ -1,16 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Login from './components/Login';
-import GasPrices from './components/GasPrices';
+import Login from "./components/Login";
+import GasPrices from "./components/GasPrices";
 
-import axios from 'axios';
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 function App() {
   const logout = () => {
-    
+    // axios call to logout - usually will remove the token from the server
+    // re-route to the Login
+    axiosWithAuth();
   };
-
 
   return (
     <Router>
