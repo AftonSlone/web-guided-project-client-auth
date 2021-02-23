@@ -9,4 +9,9 @@ import "./styles.css";
 import { BrowserRouterasRouter } from "react-router-dom";
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  rootElement
+);
