@@ -24,7 +24,13 @@ class GasPrices extends React.Component {
         // set data to state - but only the objects for the US and State of Hawaii,
         // and only for regular gasoline
         this.setState({
-          gasPrices: [], // write the algo to get only the data we want
+          gasPrices: res.data.data
+            .filter((price) => {
+              return (
+                price.location === "US" || price.location === "State of Hawaii"
+              );
+            })
+            .filter((price) => price.type === "Gasoline - Regular"), // write the algo to get only the data we want
         });
       })
       .catch((err) => console.log({ err }));
