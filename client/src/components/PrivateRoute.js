@@ -18,7 +18,7 @@ function PrivateRoute({ component, ...rest }) {
           return;
         } else {
           // route to login
-          <Redirect to="/login" />;
+          return <Redirect to="/login" />;
         }
       }}
     />
