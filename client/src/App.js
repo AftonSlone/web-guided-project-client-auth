@@ -9,8 +9,12 @@ import { axiosWithAuth } from "./utils/axiosWithAuth";
 function App() {
   const logout = () => {
     // axios call to logout - usually will remove the token from the server
-    // re-route to the Login
-    axiosWithAuth();
+    axiosWithAuth()
+      .post("/api/logout")
+      .then(() => {
+        // re-route to the Login
+        console.log("logged out 👍");
+      });
   };
 
   return (
