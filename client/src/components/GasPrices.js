@@ -21,6 +21,7 @@ class GasPrices extends React.Component {
       .get("/api/data")
       .then((res) => {
         console.log(res);
+        // set data to state - but only the objects for the US and State of Hawaii, and only for regular gasoline
       })
       .catch((err) => console.log({ err }));
   };
