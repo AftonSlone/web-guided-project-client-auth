@@ -9,7 +9,7 @@ const token = "ahuBHejkJJiMDhmODZhZi0zNWRhLTQ4ZjItOGZhYi1jZWYzOTA07i73Gebhu98";
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 function authenticator(req, res, next) {
   const { authorization } = req.headers;
@@ -25,7 +25,7 @@ app.post("/api/login", (req, res) => {
   if (username === "lambda" && password === "school") {
     req.loggedIn = true;
     res.status(200).json({
-      payload: token
+      payload: token,
     });
   } else {
     res
@@ -37,7 +37,7 @@ app.post("/api/login", (req, res) => {
 app.post("/api/logout", (req, res) => {
   //remove token from database
   res.status(200).json({
-    payload: token
+    payload: token,
   });
 });
 
