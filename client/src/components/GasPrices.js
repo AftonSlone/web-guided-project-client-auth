@@ -15,8 +15,13 @@ class GasPrices extends React.Component {
   getData = () => {
     // axios request to get data
     // needs an "authorization" header to pass the middleware fn in the server
+    const token = JSON.parse(localStorage.getItem("token"));
     axios
-      .get("http://localhost:5000/api/data")
+      .get("http://localhost:5000/api/data", {
+        headers: {
+          authorization: token,
+        },
+      })
       .then((res) => {
         console.log(res);
       })
