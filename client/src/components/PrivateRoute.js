@@ -8,8 +8,8 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-function PrivateRoute() {
-  return <Route />;
+function PrivateRoute(props) {
+  return <Route {...props} />;
 }
 
 export default PrivateRoute;
