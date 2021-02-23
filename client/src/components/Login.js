@@ -16,6 +16,7 @@ class Login extends React.Component {
         ...this.state.credentials,
         [e.target.name]: e.target.value,
       },
+      error: "",
     });
   };
 
