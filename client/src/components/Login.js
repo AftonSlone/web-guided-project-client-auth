@@ -7,6 +7,7 @@ class Login extends React.Component {
       username: "",
       password: "",
     },
+    error: "",
   };
 
   handleChange = (e) => {
@@ -28,7 +29,7 @@ class Login extends React.Component {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => console.log(err.response.data.error));
+      .catch((err) => this.setState({ error: err.response.data.error }));
   };
 
   render() {
@@ -47,6 +48,7 @@ class Login extends React.Component {
             value={this.state.credentials.password}
             onChange={this.handleChange}
           />
+          <p>{this.state.error}</p>
           <button>Log in</button>
         </form>
       </div>
