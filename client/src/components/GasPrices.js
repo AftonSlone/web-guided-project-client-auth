@@ -27,7 +27,7 @@ class GasPrices extends React.Component {
           gasPrices: res.data.data
             .filter((price) => {
               return (
-                price.location === /us/i || price.location === "State of Hawaii"
+                price.location === "US" || price.location === "State of Hawaii"
               );
             })
             .filter((price) => price.type === "Gasoline - Regular"), // write the algo to get only the data we want
