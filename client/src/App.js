@@ -1,16 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
-import Login from './components/Login';
-import GasPrices from './components/GasPrices';
+import Login from "./components/Login";
+import GasPrices from "./components/GasPrices";
 
-import axios from 'axios';
+import { PrivateRoute } from "./components/PrivateRoute";
+
+import { axiosWithAuth } from "./utils/axiosWithAuth";
 
 function App() {
   const logout = () => {
-    
+    axiosWithAuth()
+      .post("/logout")
+      .then((res) => {
+        localStorage.removeItem("token");
+      })
+      .catch((err) => {});
   };
-
 
   return (
     <Router>
@@ -27,7 +33,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          <Route exact path="/protected" component={GasPrices} />
+          <PrivateRoute exact path="/protected" component={GasPrices} />
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
